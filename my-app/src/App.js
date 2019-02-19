@@ -49,8 +49,7 @@ class App extends Component {
   render() {
     return (
         <div>
-            <HeaderApp />
-            <Favorites photos={this.state.photos} favorites={this.state.favorites} />
+            
             <Route path='/' exact component={Home} />
             <Route path='/home' exact component={Home} />
             <Route path='/browse' exact render={ (props) => 

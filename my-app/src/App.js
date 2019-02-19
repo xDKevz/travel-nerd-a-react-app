@@ -8,6 +8,7 @@ import About from './components/About.js';
 // import Favorites from './components/Favorites.js';
 import _ from 'lodash';
 
+
 class App extends Component {
 
   constructor(props) {
@@ -130,6 +131,7 @@ class App extends Component {
             }
             />
             <Route path='/about' exact component={About} />
+
         </div>
     );
   }

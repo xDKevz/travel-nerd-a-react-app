@@ -38,6 +38,9 @@ class EditPhotoDetails extends React.Component {
                                 <label>Country</label>
                                 <input type='text' name='country' onChange={this.handleChange} value={photo.country} />
                             </form>
+
+                            <button>View</button>
+                            <button>Map</button>
                         </div>
                     </article>
                 );

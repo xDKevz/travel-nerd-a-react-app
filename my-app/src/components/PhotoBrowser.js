@@ -20,7 +20,7 @@ class PhotoBrowser extends React.Component {
                 <HeaderApp />
                 <Favorites favorites={this.props.favorites} />
                 <section className="container">
-                    <PhotoList photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
+                    <PhotoList sortByValue={this.props.sortByValue} photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
                     <EditPhotoDetails photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />
                 </section>
             </div>

@@ -162,3 +162,7 @@ legend {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.filterstyle {
+  background-color: aqua;
+}

@@ -5,13 +5,31 @@ class PhotoList extends React.Component {
         
         if (this.props.photos.length > 1) {
             return (
-                <article className="photos">
-                        { this.props.photos.map( (p) => <PhotoThumb photo={p} key={p.id} showImageDetails={this.props.showImageDetails} addToFavorites={this.props.addToFavorites} /> )}
-                </article>
+                <div>
+                    <div className="filterstyle">
+                        <label>Filter by </label>
+                        <select onChange={this.handleFilter}>
+                            <option value="city">City</option>
+                            <option value="country">Country</option>
+                        </select>
+                    </div>
+
+                    <article className="photos">
+                            { this.props.photos.map( (p) => <PhotoThumb photo={p} key={p.id} showImageDetails={this.props.showImageDetails} addToFavorites={this.props.addToFavorites} /> )}
+                    </article>
+                </div>
+
             );
         } else {
             return null;
         }
     }
+
+    handleFilter = (e) => {
+        let value = e.target.value;
+        this.props.sortByValue(value);
+    }
+
+
 }
 export default PhotoList;

@@ -19,6 +19,7 @@ class App extends Component {
           const response = await fetch(url);
           const jsonData = await response.json();
           this.setState( {photos: jsonData} );
+          console.log(jsonData);
       } catch (error) {
           console.error(error);
       }
@@ -63,6 +64,31 @@ class App extends Component {
     //   tempFav.push(findPhotoData);
     //   this.setState({favorites: tempFav});
   }
+
+  sortByValue = (value) => {
+    let tmp = cloneDeep(this.state.photos);
+    if (value === "city") {
+        tmp.sort(function (a,b) {   
+            if (a.city > b.city )
+                return 1;
+            else if (a.city < b.city)
+                return -1;
+            else 
+                return 0;
+        });
+    } else {
+        tmp.sort(function (a,b) {   
+            if (a.country > b.country )
+                return 1;
+            else if (a.country < b.country)
+                return -1;
+            else 
+                return 0;
+        });
+    }
+
+    this.setState({photos: tmp});
+  }
   
   render() {
     return (
@@ -70,7 +96,7 @@ class App extends Component {
             <Route path='/' exact component={Home} />
             <Route path='/home' exact component={Home} />
             <Route path='/browse' exact render={ (props) => 
-                <PhotoBrowser favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
+                <PhotoBrowser sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
             }
             />
             <Route path='/about' exact component={About} />

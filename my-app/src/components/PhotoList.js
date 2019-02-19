@@ -9,6 +9,7 @@ class PhotoList extends React.Component {
                     <div className="filterstyle">
                         <label>Filter by </label>
                         <select onChange={this.handleFilter}>
+                            <option>Select Option</option>
                             <option value="city">City</option>
                             <option value="country">Country</option>
                         </select>

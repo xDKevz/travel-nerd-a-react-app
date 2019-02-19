@@ -15,6 +15,10 @@ class EditPhotoDetails extends React.Component {
         //3. tell parent (or above) to update state for this photo
         this.props.updatePhoto(this.props.currentPhoto, clonedPhoto);
     }
+
+    handleChangeRender = () => {
+        this.props.changeRender("view");
+    }
     
     render() {
         const id = this.props.currentPhoto;
@@ -31,15 +35,24 @@ class EditPhotoDetails extends React.Component {
     
                                 <label>Title</label>
                                 <input type='text' name='title' onChange={this.handleChange} value={photo.title} />
+
+                                <label>Description</label>
+                                <input type='text' name='description' onChange={this.handleChange} value={photo.description} />
     
                                 <label>City</label>
                                 <input type='text' name='city' onChange={this.handleChange} value={photo.city} />
     
                                 <label>Country</label>
                                 <input type='text' name='country' onChange={this.handleChange} value={photo.country} />
+
+                                <label>Latitude</label>
+                                <input type='text' name='latitude' onChange={this.handleChange} value={photo.latitude} />
+    
+                                <label>Longtitude</label>
+                                <input type='text' name='longitude' onChange={this.handleChange} value={photo.longitude} />
                             </form>
 
-                            <button>View</button>
+                            <button onClick={this.handleChangeRender}>View</button>
                             <button>Map</button>
                         </div>
                     </article>

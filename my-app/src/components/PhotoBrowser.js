@@ -9,7 +9,7 @@ import { Route } from 'react-router-dom';
 class PhotoBrowser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { currentPhoto: 1, renderValue: "single" };
+        this.state = { currentPhoto: 1, renderValue: "view" };
     }
     
     showImageDetails = (id) => {
@@ -21,7 +21,7 @@ class PhotoBrowser extends React.Component {
     }
     
     render() {
-        if (this.state.renderValue === "single") {
+        if (this.state.renderValue === "view") {
             return (
                 <div>
                     <HeaderApp />
@@ -39,7 +39,7 @@ class PhotoBrowser extends React.Component {
                     <Favorites favorites={this.props.favorites} />
                     <section className="container">
                         <PhotoList removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} sortByValue={this.props.sortByValue} photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
-                        <EditPhotoDetails photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />
+                        <EditPhotoDetails changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />
                     </section>
                 </div>
             );

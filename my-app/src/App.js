@@ -37,6 +37,9 @@ class App extends Component {
       photoToReplace.title = photo.title;
       photoToReplace.city = photo.city;
       photoToReplace.country = photo.country;
+      photoToReplace.description = photo.description;
+      photoToReplace.latitude = photo.latitude;
+      photoToReplace.longtitude = photo.longtitude;
       //update state
       this.setState( {photos: copyPhotos } );
   }

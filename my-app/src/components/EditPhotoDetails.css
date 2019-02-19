@@ -14,3 +14,7 @@ form.photoForm input {
 form.photoForm input:focus {
     box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.49);
 }
+
+form img {
+    height: 500px;
+}

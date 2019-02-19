@@ -80,6 +80,8 @@ button {
   grid-template-columns: repeat(auto-fit, 250px);
   grid-gap: 5px;
   background-color: var(--list-back);
+  overflow-y: auto;
+  height: 800px;
 }
 
 .photoBox {

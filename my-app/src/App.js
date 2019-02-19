@@ -67,18 +67,14 @@ class App extends Component {
   }
 
   removePhotoFromList = (id) => {
-      // find photo to delete
-      const photo = this.state.photos.find(p => p.id === id);
-
       let index = _.findIndex(this.state.photos, ['id', id]);
       
-      if (index > 0) {
+      if (index > -1) {
           // create copy of favorites
           const copyPhotos = cloneDeep(this.state.photos);
           //console.log(copyPhotos);
           // delete photo
           _.remove(copyPhotos, copyPhotos[index]);
-          console.log(copyPhotos);
           // update state
           this.setState({ photos: copyPhotos });
           alert("Photo Deleted");

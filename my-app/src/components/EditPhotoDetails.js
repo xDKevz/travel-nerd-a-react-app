@@ -21,25 +21,36 @@ class EditPhotoDetails extends React.Component {
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
         if (this.props.photos.length > 0) {
             const photo = this.props.photos.find( p => p.id === id);
-            return (
-                <article className="details">
-                    <div className="detailsPhotoBox">
-                        <form className="photoForm">
-                            <legend>Edit Photo Details</legend>
-                            <img src={imgURL+photo.path} alt={photo.title}/>
+            if (photo != null) {
+                return (
+                    <article className="details">
+                        <div className="detailsPhotoBox">
+                            <form className="photoForm">
+                                <legend>Edit Photo Details</legend>
+                                <img src={imgURL+photo.path} alt={photo.title}/>
+    
+                                <label>Title</label>
+                                <input type='text' name='title' onChange={this.handleChange} value={photo.title} />
+    
+                                <label>City</label>
+                                <input type='text' name='city' onChange={this.handleChange} value={photo.city} />
+    
+                                <label>Country</label>
+                                <input type='text' name='country' onChange={this.handleChange} value={photo.country} />
+                            </form>
+                        </div>
+                    </article>
+                );
+            } else {
+                return (
+                    <article className="details">
+                        <div className="detailsPhotoBox">
+                            <h1>Photo Removed</h1>
+                        </div>
+                    </article>
+                );
+            }
 
-                            <label>Title</label>
-                            <input type='text' name='title' onChange={this.handleChange} value={photo.title} />
-
-                            <label>City</label>
-                            <input type='text' name='city' onChange={this.handleChange} value={photo.city} />
-
-                            <label>Country</label>
-                            <input type='text' name='country' onChange={this.handleChange} value={photo.country} />
-                        </form>
-                    </div>
-                </article>
-            );
         } else {
             return null;
         }    

@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import Home from './components/Home.js';
 import About from './components/About.js';
 // import Favorites from './components/Favorites.js';
+import _ from 'lodash';
 
 class App extends Component {
 
@@ -65,6 +66,25 @@ class App extends Component {
     //   this.setState({favorites: tempFav});
   }
 
+  removePhotoFromList = (id) => {
+      // find photo to delete
+      const photo = this.state.photos.find(p => p.id === id);
+
+      let index = _.findIndex(this.state.photos, ['id', id]);
+      
+      if (index > 0) {
+          // create copy of favorites
+          const copyPhotos = cloneDeep(this.state.photos);
+          //console.log(copyPhotos);
+          // delete photo
+          _.remove(copyPhotos, copyPhotos[index]);
+          console.log(copyPhotos);
+          // update state
+          this.setState({ photos: copyPhotos });
+          alert("Photo Deleted");
+      }
+  }
+
   sortByValue = (value) => {
     let tmp = cloneDeep(this.state.photos);
     if (value === "city") {
@@ -89,14 +109,14 @@ class App extends Component {
 
     this.setState({photos: tmp});
   }
-  
+
   render() {
     return (
         <div>
             <Route path='/' exact component={Home} />
             <Route path='/home' exact component={Home} />
-            <Route path='/browse' exact render={ (props) => 
-                <PhotoBrowser sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
+            <Route path='/browse' exact render={(props) =>
+                <PhotoBrowser removePhotoFromList={this.removePhotoFromList} sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
             }
             />
             <Route path='/about' exact component={About} />

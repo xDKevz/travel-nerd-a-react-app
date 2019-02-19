@@ -18,7 +18,9 @@ body {
 
 .banner {
   color: white;
-  background: url('https://storage.googleapis.com/funwebdev-3rd-travel/large/9496792166.jpg') top left/cover no-repeat;
+  /* default: https://storage.googleapis.com/funwebdev-3rd-travel/large/9496792166.jpg */
+  /* splash image */
+  background: url('https://source.unsplash.com/user/anniespratt/qyAka7W5uMY/1920x1080') top left/cover no-repeat;
   height: 700px;
   display: flex;
   justify-content: center;

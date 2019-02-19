@@ -39,11 +39,29 @@ class App extends Component {
   }
   
   addPhotoToFavorites = (id) => {
-      let photoArray = this.state.photos;
-      let findPhotoData = photoArray.find( p => p.id === id);
-      let tempFav = this.state.favorites;
-      tempFav.push(findPhotoData);
-      this.setState({favorites: tempFav});
+    // find photo to add
+    const photo = this.state.photos.find (p => p.id === id);
+
+    // check if item is already in favorite
+    // if not add it
+    if (!this.state.favorites.find (p => p.id === id)) {
+        // create copy of favorites
+        const copyFavorites = cloneDeep(this.state.favorites);
+
+        // push item into array
+        copyFavorites.push(photo);
+
+        // update state
+        this.setState({favorites: copyFavorites});
+    } else {
+        alert("Photo already in favorites");
+    }
+
+    //   let photoArray = this.state.photos;
+    //   let findPhotoData = photoArray.find( p => p.id === id);
+    //   let tempFav = this.state.favorites;
+    //   tempFav.push(findPhotoData);
+    //   this.setState({favorites: tempFav});
   }
   
   render() {

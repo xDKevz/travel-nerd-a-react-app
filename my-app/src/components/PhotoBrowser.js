@@ -1,6 +1,8 @@
 import React from "react";
 import PhotoList from './PhotoList.js';
 import EditPhotoDetails from './EditPhotoDetails.js';
+import HeaderApp from './HeaderApp.js';
+import Favorites from './Favorites.js';
 
 class PhotoBrowser extends React.Component {
     constructor(props) {
@@ -14,10 +16,14 @@ class PhotoBrowser extends React.Component {
     
     render() {
         return (
-            <section className="container">
-                <PhotoList photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
-                <EditPhotoDetails photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />
-            </section>
+            <div>
+                <HeaderApp />
+                <Favorites favorites={this.props.favorites} />
+                <section className="container">
+                    <PhotoList photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
+                    <EditPhotoDetails photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />
+                </section>
+            </div>
         );
     }
 }

@@ -81,6 +81,20 @@ class App extends Component {
       }
   }
 
+  removePhotoFromFav = (id) => {
+    let index = _.findIndex(this.state.favorites, ['id', id]);
+    
+    if (index > -1) {
+        // create copy of favorites
+        const copyFav = cloneDeep(this.state.favorites);
+        //console.log(copyPhotos);
+        // delete photo
+        _.remove(copyFav, copyFav[index]);
+        // update state
+        this.setState({ favorites: copyFav });
+    }
+}
+
   sortByValue = (value) => {
     let tmp = cloneDeep(this.state.photos);
     if (value === "city") {
@@ -112,7 +126,7 @@ class App extends Component {
             <Route path='/' exact component={Home} />
             <Route path='/home' exact component={Home} />
             <Route path='/browse' exact render={(props) =>
-                <PhotoBrowser removePhotoFromList={this.removePhotoFromList} sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
+                <PhotoBrowser removePhotoFromFav={this.removePhotoFromFav} removePhotoFromList={this.removePhotoFromList} sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
             }
             />
             <Route path='/about' exact component={About} />

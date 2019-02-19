@@ -12,7 +12,10 @@ class PhotoThumb extends React.Component {
     handleRemoveClick = () => {
         console.log("removed");
         this.props.removePhotoFromList(this.props.photo.id);
+        this.props.removePhotoFromFav(this.props.photo.id);
     }
+
+
 
     render() {
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/square-medium/${this.props.photo.path}`;

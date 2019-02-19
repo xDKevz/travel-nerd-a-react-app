@@ -16,7 +16,7 @@ class PhotoList extends React.Component {
                     </div>
 
                     <article className="photos">
-                        {this.props.photos.map((p) => <PhotoThumb photo={p} key={p.id} removePhotoFromList={this.props.removePhotoFromList} showImageDetails={this.props.showImageDetails} addToFavorites={this.props.addToFavorites} />)}
+                        {this.props.photos.map((p) => <PhotoThumb photo={p} key={p.id} removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} showImageDetails={this.props.showImageDetails} addToFavorites={this.props.addToFavorites} />)}
                     </article>
                 </div>
 

@@ -21,7 +21,6 @@ class App extends Component {
           const response = await fetch(url);
           const jsonData = await response.json();
           this.setState( {photos: jsonData} );
-          console.log(jsonData);
       } catch (error) {
           console.error(error);
       }
@@ -96,25 +95,12 @@ class App extends Component {
   sortByValue = (value) => {
     let tmp = cloneDeep(this.state.photos);
     if (value === "city") {
-        tmp.sort(function (a,b) {   
-            if (a.city > b.city )
-                return 1;
-            else if (a.city < b.city)
-                return -1;
-            else 
-                return 0;
-        });
+        tmp.sort( (a,b) => a.city > b.city ? 1:-1);
+    } else if (value === "country")  {
+        tmp.sort( (a,b) => a.country > b.country ? 1:-1);
     } else {
-        tmp.sort(function (a,b) {   
-            if (a.country > b.country )
-                return 1;
-            else if (a.country < b.country)
-                return -1;
-            else 
-                return 0;
-        });
+        tmp.sort( (a,b) => a.id - b.id);
     }
-
     this.setState({photos: tmp});
   }
 

@@ -4,7 +4,6 @@ import EditPhotoDetails from './EditPhotoDetails.js';
 import HeaderApp from './HeaderApp.js';
 import Favorites from './Favorites.js';
 import ViewSinglePhoto from './ViewSinglePhoto.js';
-import { Route } from 'react-router-dom';
 
 class PhotoBrowser extends React.Component {
     constructor(props) {

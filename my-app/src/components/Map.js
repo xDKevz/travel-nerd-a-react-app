@@ -3,10 +3,13 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
  
 export class MapContainer extends React.Component {
 
-
+    handleChangeRender = () => {
+        this.props.changeRender("map");
+    }
     
     render() {
         const style = { width: '500px', height: '800px' };
+        const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/square-medium/`;
         let photo = this.props.photos.find((obj) => obj.id === this.props.currentPhoto);
         console.log(photo);
 
@@ -24,6 +27,10 @@ export class MapContainer extends React.Component {
                     </div>
                     <div>
                         <h1>This is a random text</h1>
+                        <img src={imgURL + photo.path} alt={photo.title} />
+                        <h2>{photo.title}</h2>
+                        <h3>{photo.city}, {photo.country}</h3>
+                        <button onClick={this.handleChangeRender}>View</button>
                     </div>
                 </div>
             );

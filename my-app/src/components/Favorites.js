@@ -5,8 +5,7 @@ class Favorites extends React.Component {
         return (
             <article className="favorites">
                 <div>
-                    <p>❤</p>
-                    <p>Favorites</p>
+                    <p>❤ Favorites</p>
                 </div>
                 {this.props.favorites.map( (p) => <FavoriteItem favorites={p} key={p.id} /> )}
             </article>

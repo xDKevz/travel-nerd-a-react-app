@@ -1,7 +1,7 @@
 import React from "react";
 class PhotoThumb extends React.Component {
     
-    handleViewClick = () => {
+    handleViewClick = (e) => {
         this.props.showImageDetails(this.props.photo.id);
     }
     
@@ -27,17 +27,18 @@ class PhotoThumb extends React.Component {
         this.props.changeRender("view");
     }
 
+    
 
     render() {
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/square-medium/${this.props.photo.path}`;
         return (
                 <div>
-                    <button onClick={this.handleRemoveClick}>X</button>
-                    <div className="photoBox" onClick={ this.handleViewClick} >
+                    <div className="photoBox" onClick={this.handleViewClick}>
                             <figure>
                                 <img src={imgURL} className="photoThumb" title={this.props.photo.title} alt={this.props.photo.title} />
                             </figure>
                             <div className="details">
+                                <button className="removed" onClick={this.handleRemoveClick}>x</button>
                                 <h3>{this.props.photo.title}</h3>
                                 <p>{this.props.photo.city}, {this.props.photo.country}</p>
                             </div>

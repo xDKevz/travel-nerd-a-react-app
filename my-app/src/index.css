@@ -88,6 +88,7 @@ button {
   display: grid;
   grid-template-columns: 110px 1fr;
   grid-gap: 2px;
+  border-radius: 0.5em;
 
   background-color: var(--list-box-back);
   margin: 0.75rem;
@@ -104,7 +105,8 @@ button {
   margin: 0;
 }
 .photoBox h3 {
-  font-size: 0.85em;
+
+  font-size: 0.80em;
   font-weight: bold;
 }
 .photoBox p {
@@ -120,12 +122,13 @@ button {
 img.photoThumb {
   width: 100px;
   height: 100px;
+  border-radius: 1em;
 }
 
 .details {
   background-color: var(--details-back);
   padding: 0.4em;
-  width: 95%
+  width: 90%
 }
 .detailsPhotoBox {
   box-sizing: border-box;
@@ -133,6 +136,15 @@ img.photoThumb {
  
   padding: 1em;
   background-color: var(--details-box-back)
+}
+
+.details .removed {
+  float: right;
+  opacity: 0;
+}
+
+.details .removed:hover {
+  opacity: 1;
 }
 
 figure {

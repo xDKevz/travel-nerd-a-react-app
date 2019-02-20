@@ -10,9 +10,10 @@ export class MapContainer extends React.Component {
         let photo = this.props.photos.find((obj) => obj.id === this.props.currentPhoto);
         console.log(photo);
        return (
-           <Map google={this.props.google} style={style}
+           <Map key={photo.id} google={this.props.google} style={style}
                initialCenter={{ lat: Number(photo.latitude), lng: Number(photo.longitude) }}
-               zoom={15} onClick={this.onMapClicked}>
+               zoom={15} onClick={this.onMapClicked} 
+               >
  
         <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />

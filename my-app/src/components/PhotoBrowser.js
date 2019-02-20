@@ -4,6 +4,9 @@ import EditPhotoDetails from './EditPhotoDetails.js';
 import HeaderApp from './HeaderApp.js';
 import Favorites from './Favorites.js';
 import ViewSinglePhoto from './ViewSinglePhoto.js';
+import Map from './Map.js';
+
+
 
 class PhotoBrowser extends React.Component {
     constructor(props) {
@@ -22,6 +25,8 @@ class PhotoBrowser extends React.Component {
     viewOrEdit = () => {
         if (this.state.renderValue === "edit")
             return (<EditPhotoDetails changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />);
+        else if (this.state.renderValue === "map")
+            return (<Map />)
         else 
             return (<ViewSinglePhoto changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />);
     }
@@ -32,7 +37,7 @@ class PhotoBrowser extends React.Component {
                 <HeaderApp />
                 <Favorites favorites={this.props.favorites} />
                 <section className="container">
-                        <PhotoList removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} sortByValue={this.props.sortByValue} photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
+                        <PhotoList changeRender={this.changeRender} removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} sortByValue={this.props.sortByValue} photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
                         {this.viewOrEdit()}
                 </section>
             </div>

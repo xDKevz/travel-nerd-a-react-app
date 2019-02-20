@@ -7,6 +7,7 @@ class ViewSinglePhoto extends React.Component {
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
         if (this.props.photos.length > 0) {
             const photo = this.props.photos.find( p => p.id === id);
+            if (photo != null) {
                 return (
                     <article className="details">
                         <div className="detailsPhotoBox">
@@ -21,6 +22,16 @@ class ViewSinglePhoto extends React.Component {
                     </article>
 
                 );
+            } else {
+                return (
+                    <article className="details">
+                        <div className="detailsPhotoBox">
+                            <h1>Photo Removed</h1>
+                        </div>
+                    </article>
+                );
+            }
+                
         } else {
             return null;
         }

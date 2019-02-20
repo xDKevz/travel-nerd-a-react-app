@@ -15,6 +15,17 @@ class PhotoThumb extends React.Component {
         this.props.removePhotoFromFav(this.props.photo.id);
     }
 
+    handleMap = () => {
+        
+    }
+
+    handleEditClick = () => {
+        this.props.changeRender("edit");
+    }
+
+    handleViewButton = () => {
+        this.props.changeRender("view");
+    }
 
 
     render() {
@@ -22,18 +33,18 @@ class PhotoThumb extends React.Component {
         return (
                 <div>
                     <button onClick={this.handleRemoveClick}>X</button>
-                    <div  className="photoBox" onClick={ this.handleViewClick } >
-                        <figure>
-                            <img src={imgURL} className="photoThumb" title={this.props.photo.title} alt={this.props.photo.title} />
-                        </figure>
-                        <div>
-                            <h3>{this.props.photo.title}</h3>
-                            <p>{this.props.photo.city}, {this.props.photo.country}</p>
-                            <button onClick={this.handleViewClick} >View</button>
+                    <div className="photoBox" onClick={ this.handleViewClick} >
+                            <figure>
+                                <img src={imgURL} className="photoThumb" title={this.props.photo.title} alt={this.props.photo.title} />
+                            </figure>
+                            <div className="details">
+                                <h3>{this.props.photo.title}</h3>
+                                <p>{this.props.photo.city}, {this.props.photo.country}</p>
+                            </div>
+                            <button onClick={this.handleViewButton} >View</button>
                             <button onClick={this.handleFavClick}>❤</button>
-                            <button>Map</button>
-                            <button>Edit</button>
-                        </div>
+                            <button onClick={this.handleMap}>Map</button>
+                            <button onClick={this.handleEditClick}>Edit</button>
                     </div>
                 </div>
         );

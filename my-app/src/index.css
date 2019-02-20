@@ -124,7 +124,7 @@ img.photoThumb {
 
 .details {
   background-color: var(--details-back);
-  padding: 0.5em;
+  padding: 0.4em;
   width: 95%
 }
 .detailsPhotoBox {

@@ -66,7 +66,6 @@ class EditPhotoDetails extends React.Component {
                     </article>
                 );
             }
-
         } else {
             return null;
         }    

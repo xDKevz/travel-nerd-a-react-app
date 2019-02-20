@@ -178,3 +178,14 @@ legend {
 .filterstyle {
   background-color: aqua;
 }
+
+/* map */
+
+.map {
+  display: grid;
+  grid-template-columns: 500px auto;
+  grid-gap: 5px;
+  background-color: white;
+  color: red;
+  width: 600px;
+}

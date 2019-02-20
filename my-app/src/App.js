@@ -62,12 +62,6 @@ class App extends Component {
     } else {
         alert("Photo already in favorites");
     }
-
-    //   let photoArray = this.state.photos;
-    //   let findPhotoData = photoArray.find( p => p.id === id);
-    //   let tempFav = this.state.favorites;
-    //   tempFav.push(findPhotoData);
-    //   this.setState({favorites: tempFav});
   }
 
   removePhotoFromList = (id) => {

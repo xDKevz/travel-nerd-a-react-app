@@ -16,7 +16,7 @@ class PhotoThumb extends React.Component {
     }
 
     handleMap = () => {
-        
+        this.props.changeRender("map");
     }
 
     handleEditClick = () => {

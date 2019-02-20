@@ -6,8 +6,6 @@ import Favorites from './Favorites.js';
 import ViewSinglePhoto from './ViewSinglePhoto.js';
 import Map from './Map.js';
 
-
-
 class PhotoBrowser extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +24,7 @@ class PhotoBrowser extends React.Component {
         if (this.state.renderValue === "edit")
             return (<EditPhotoDetails changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />);
         else if (this.state.renderValue === "map")
-            return (<Map />)
+            return (<Map photos={this.props.photos} currentPhoto={this.state.currentPhoto} />)
         else 
             return (<ViewSinglePhoto changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />);
     }

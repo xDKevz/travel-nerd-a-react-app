@@ -2,16 +2,24 @@ import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
  
 export class MapContainer extends React.Component {
-  render() {
-    return (
-      <Map google={this.props.google} zoom={14}>
+
+
+    
+    render() {
+        const style = { width: '900px', height: '900px' };
+        let photo = this.props.photos.find((obj) => obj.id === this.props.currentPhoto);
+        console.log(photo);
+       return (
+           <Map google={this.props.google} style={style}
+               initialCenter={{ lat: Number(photo.latitude), lng: Number(photo.longitude) }}
+               zoom={15} onClick={this.onMapClicked}>
  
         <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />
  
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              
             </div>
         </InfoWindow>
       </Map>

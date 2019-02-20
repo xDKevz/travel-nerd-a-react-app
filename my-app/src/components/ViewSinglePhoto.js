@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class ViewSinglePhoto extends React.Component {
     render() {
         const id = this.props.currentPhoto;

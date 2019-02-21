@@ -15,7 +15,19 @@ class App extends Component {
     super(props); 
     this.state = { photos: [], favorites: [] };
   }
+
+  updateLocalStorage = (data) => {
+      localStorage.setItem('favorites', JSON.stringify(data));
+  }
+
+  getLocalStorageFav = () => {
+      return JSON.parse(localStorage.getItem('favorites'));
+  }
+
   async componentDidMount() {
+    if (this.getLocalStorageFav() !== null) {
+        console.log(this.setState({favorites: this.getLocalStorageFav()}));
+    }
       try {
           const url = "http://randyconnolly.com/funwebdev/services/travel/images.php";
           const response = await fetch(url);
@@ -59,6 +71,11 @@ class App extends Component {
 
         // update state
         this.setState({favorites: copyFavorites});
+        console.log(this.state.favorites);
+
+        // update local storage
+        this.updateLocalStorage(this.state.favorites);
+        console.log(this.getLocalStorageFav());
     } else {
         alert("Photo already in favorites");
     }
@@ -75,7 +92,6 @@ class App extends Component {
           _.remove(copyPhotos, copyPhotos[index]);
           // update state
           this.setState({ photos: copyPhotos });
-          alert("Photo Deleted");
       }
   }
 
@@ -90,6 +106,9 @@ class App extends Component {
         _.remove(copyFav, copyFav[index]);
         // update state
         this.setState({ favorites: copyFav });
+
+        // update local storage
+        this.updateLocalStorage(copyFav);
     }
 }
 

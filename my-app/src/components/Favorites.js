@@ -7,7 +7,7 @@ class Favorites extends React.Component {
                 <div>
                     <p>❤ Favorites</p>
                 </div>
-                {this.props.favorites.map( (p) => <FavoriteItem favorites={p} key={p.id} /> )}
+                {this.props.favorites.map( (p) => <FavoriteItem removePhotoFromFav={this.props.removePhotoFromFav} favorites={p} key={p.id} /> )}
             </article>
         );
     }

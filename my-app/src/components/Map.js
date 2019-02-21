@@ -88,42 +88,46 @@ export class MapContainer extends React.Component {
     
     
     render() {
-        const style = { width: '500px', height: '800px' };
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/square-medium/`;
-        let photo = this.props.photos.find((obj) => obj.id === this.props.currentPhoto);
-        console.log(photo);
-
-        if (photo != null) {
-            return (
-                <div className="mapViewBox" >
-                    <div>
-                        <Map className="map" key={photo.id} google={this.props.google} style={style}
-                            initialCenter={{ lat: Number(photo.latitude), lng: Number(photo.longitude) }}
-                            zoom={15} onClick={this.onMapClicked}
-                        >
-
-                            <Marker title={photo.title} onClick={this.onMarkerClick} name={'Current location'} />
-                        </Map>
+        if (this.props.photos.length > 0) {
+            let photo = this.props.photos.find((obj) => obj.id === this.props.currentPhoto);
+            if (photo != null) {
+                return (
+                    <div className="mapViewBox" >
+                        <div>
+                            <Map className="map" key={photo.id} google={this.props.google} 
+                                style={{ width: '500px', height: '800px' }}
+                                initialCenter={{ lat: Number(photo.latitude), lng: Number(photo.longitude) }}
+                                zoom={15} onClick={this.onMapClicked}
+                            >
+    
+                                <Marker title={photo.title} onClick={this.onMarkerClick} name={'Current location'} />
+                            </Map>
+                        </div>
+                        <div>
+                            <img src={imgURL + photo.path} alt={photo.title} />
+                            <h2>{photo.title}</h2>
+                            <h3>{photo.city}, {photo.country}</h3>
+                            <p>{this.calculateDistance(photo.latitude, photo.longitude)}</p>
+                            
+                            <button onClick={this.handleView}>View</button>
+                            <button onClick={this.handleEdit}>Edit</button>
+                        </div>
                     </div>
-                    <div>
-                        <img src={imgURL + photo.path} alt={photo.title} />
-                        <h2>{photo.title}</h2>
-                        <h3>{photo.city}, {photo.country}</h3>
-                        <p>{this.calculateDistance(photo.latitude, photo.longitude)}</p>
-                        
-                        <button onClick={this.handleView}>View</button>
-                        <button onClick={this.handleEdit}>Edit</button>
-                    </div>
-                </div>
-            );
-        } else {
-            return (<Map google={this.props.google} style={style}
-                initialCenter={{ lat: 25.0000, lng: -71.0000 }}
-                zoom={15} onClick={this.onMapClicked}>
-                <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
-            </Map>);
+                );
+            } else {
+                return (
+                    <article className="details">
+                        <div className="detailsPhotoBox">
+                            <h1>Photo Removed</h1>
+                        </div>
+                    </article>
+                )
+    
+            }
         }
+
+
   }
 }
  

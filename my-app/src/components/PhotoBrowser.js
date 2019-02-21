@@ -25,7 +25,7 @@ class PhotoBrowser extends React.Component {
             return (<EditPhotoDetails changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />);
         else if (this.state.renderValue === "map")
             return (
-                <Map changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />
+                <Map photos={this.props.photos} currentPhoto={this.state.currentPhoto} />
             )
         else 
             return (<ViewSinglePhoto changeRender={this.changeRender} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />);
@@ -36,7 +36,7 @@ class PhotoBrowser extends React.Component {
             <div>
                 <HeaderApp />
                 <Favorites favorites={this.props.favorites} />
-                <section className="container">
+                <section  className="container">
                         <PhotoList changeRender={this.changeRender} removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} sortByValue={this.props.sortByValue} photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
                         {this.viewOrEdit()}
                 </section>

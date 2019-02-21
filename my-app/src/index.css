@@ -176,16 +176,17 @@ legend {
 }
 
 .filterstyle {
-  background-color: aqua;
+  background-color: var(--list-box-back);
 }
 
 /* map */
 
-.map {
+.mapViewBox {
   display: grid;
-  grid-template-columns: 500px auto;
+  grid-template-columns: auto 50%;
   grid-gap: 5px;
-  background-color: white;
+  /* background-color: white; */
   color: red;
-  width: 100%;
+  height: 100%;
+  background-color: var(--list-box-back);
 }

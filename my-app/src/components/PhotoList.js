@@ -5,7 +5,7 @@ class PhotoList extends React.Component {
         
         if (this.props.photos.length > 1) {
             return (
-                <div>
+                <div className="photoList">
                     <div className="filterstyle">
                         <label>Filter by </label>
                         <select onChange={this.handleFilter}>
@@ -14,7 +14,6 @@ class PhotoList extends React.Component {
                             <option value="country">Country</option>
                         </select>
                     </div>
-
                     <article className="photos">
                         {this.props.photos.map((p) => <PhotoThumb changeRender={this.props.changeRender} photo={p} key={p.id} removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} showImageDetails={this.props.showImageDetails} addToFavorites={this.props.addToFavorites} />)}
                     </article>

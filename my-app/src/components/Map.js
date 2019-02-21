@@ -31,7 +31,7 @@ export class MapContainer extends React.Component {
                             zoom={15} onClick={this.onMapClicked}
                         >
 
-                        <Marker title={photo.title} onClick={this.onMarkerClick} name={'Current location'} />
+                            <Marker title={photo.title} onClick={this.onMarkerClick} name={'Current location'} />
                         </Map>
                     </div>
                     <div>

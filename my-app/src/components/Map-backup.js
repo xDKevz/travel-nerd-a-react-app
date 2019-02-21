@@ -2,7 +2,6 @@ import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
  
 export class MapContainer extends React.Component {
-
     componentDidMount () {
         document.querySelector(".map").style.width = "50%";
         document.querySelector(".map").style.height = "45%";
@@ -25,14 +24,14 @@ export class MapContainer extends React.Component {
 
         if (photo != null) {
             return (
-                <div className="map" >
+                <div  >
                     <div>
-                        <Map key={photo.id} google={this.props.google} style={style}
+                        <Map className="map" key={photo.id} google={this.props.google} style={style}
                             initialCenter={{ lat: Number(photo.latitude), lng: Number(photo.longitude) }}
                             zoom={15} onClick={this.onMapClicked}
                         >
 
-                        <Marker title={photo.title} onClick={this.onMarkerClick} name={'Current location'} />
+                            <Marker title={photo.title} onClick={this.onMarkerClick} name={'Current location'} />
                         </Map>
                     </div>
                     <div>

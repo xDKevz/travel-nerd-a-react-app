@@ -3,6 +3,16 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
  
 export class MapContainer extends React.Component {
 
+    componentDidMount () {
+        document.querySelector(".map").style.width = "50%";
+        document.querySelector(".map").style.height = "45%";
+    }
+
+    componentDidUpdate () {
+        document.querySelector(".map").style.width = "50%";
+        document.querySelector(".map").style.height = "45%";
+    }
+
     handleChangeRender = () => {
         this.props.changeRender("map");
     }

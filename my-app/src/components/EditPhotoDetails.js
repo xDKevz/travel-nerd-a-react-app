@@ -16,10 +16,14 @@ class EditPhotoDetails extends React.Component {
         this.props.updatePhoto(this.props.currentPhoto, clonedPhoto);
     }
 
-    handleChangeRender = () => {
+    handleView = () => {
         this.props.changeRender("view");
     }
     
+    handleMap = () => {
+        this.props.changeRender("map");
+    }
+
     render() {
         const id = this.props.currentPhoto;
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
@@ -52,8 +56,8 @@ class EditPhotoDetails extends React.Component {
                                 <input type='text' name='longitude' onChange={this.handleChange} value={photo.longitude} />
                             </form>
 
-                            <button onClick={this.handleChangeRender}>View</button>
-                            <button>Map</button>
+                            <button onClick={this.handleView}>View</button>
+                            <button onClick={this.handleMap}>Map</button>
                         </div>
                     </article>
                 );

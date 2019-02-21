@@ -15,9 +15,9 @@ class ViewSinglePhoto extends React.Component {
                             <h2>{photo.title}</h2>
                             <p>{photo.description}</p>
                             <p>{photo.city}, {photo.country}</p>
-                            <button onClick={this.handleChangeRender}>Edit</button>
+                            <button onClick={this.handleEdit}>Edit</button>
                             
-                            <button>Map</button>
+                            <button onClick={this.handleMap}>Map</button>
                         </div>
                     </article>
 
@@ -37,9 +37,15 @@ class ViewSinglePhoto extends React.Component {
         }
     }
 
-    handleChangeRender = () => {
+    handleEdit = () => {
         this.props.changeRender("edit");
     }
+
+    handleMap = () => {
+        this.props.changeRender("map");
+    }
+
+
 }
 
 export default ViewSinglePhoto;

@@ -1,19 +1,16 @@
 import React from 'react';
 import FavoriteItem from './FavoriteItem.js';
-class Favorites extends React.Component {
-    handleDownload = () => {
-        this.props.generateZip();
-    }
 
+class Favorites extends React.Component {
     render() {
         return (
-            <article className="favorites">
-                <div>
+            <div className="favorites">
+                <div className="label">
                     <p>❤ Favorites</p>
-                    <button onClick={this.handleDownload}>Download</button>
+                    <button>Download</button>
                 </div>
-                {this.props.favorites.map( (p) => <FavoriteItem removePhotoFromFav={this.props.removePhotoFromFav} favorites={p} key={p.id} /> )}
-            </article>
+                { this.props.favorites.map ( (p) => <FavoriteItem photo={p} key={p.id} /> )}
+            </div>
         );
     }
 }

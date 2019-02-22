@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 
@@ -7,8 +7,8 @@ class Home extends React.Component {
         return (
             <div className="banner">
                 <div>
-                    <h1>Travel Photos</h1>
-                    <h3>Upload and Share</h3>
+                    <h1>Travel Nerd</h1>
+                    <h3>Browse & Share</h3>
                     <p>
                         <Link to='/browse'>
                             <button>Browse</button>

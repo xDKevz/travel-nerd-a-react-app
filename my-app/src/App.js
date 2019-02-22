@@ -9,7 +9,7 @@ import About from './components/About.js';
 import _ from 'lodash';
 import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
-
+import { fileSaver } from 'jszip/vendor/FileSaver.js';
 
 class App extends Component {
 
@@ -27,12 +27,27 @@ class App extends Component {
   }
 
   generateZip = () => {
-      let zip = new JSZip();
-      zip.file("test.jpg", this.urlToDownload("https://storage.googleapis.com/funwebdev-3rd-travel/large/15108090436.jpg"), {binary: true});
-      zip.generateAsync({type:"blob"})
-      .then(function(content){
-          zip.saveAs(content, "test.zip")
-      })
+
+      const zip = new JSZip();
+      const folder = zip.folder('project');
+      let url = "https://storage.googleapis.com/funwebdev-3rd-travel/large/15108090436.jpg";
+      const blobPromise = fetch(url).then(r => {
+          if (r.status === 200) {
+              return r.blob();
+          }
+          return Promise.reject(new Error(r.statusText));
+      });
+      const name = url.substring(url.lastIndexOf('/'));
+      folder.file(name, blobPromise);
+
+      zip.generateAsync({ type: "blob" }).then(blob => fileSaver.saveAs(blob, "test.zip")).catch(e => console.log(e));
+
+      //let zip = new JSZip();
+      //zip.file("test.jpg", this.urlToDownload("https://storage.googleapis.com/funwebdev-3rd-travel/large/15108090436.jpg"), {binary: true});
+      //zip.generateAsync({ type: "blob" })
+      //    .then(function (content) {
+      //        zip.saveAs(content, "test.zip")
+      //    });
   }
 
   //https://stuk.github.io/jszip/documentation/examples/downloader.html

@@ -6,6 +6,7 @@
     "braces": "^2.3.2",
     "google-maps-react": "^2.0.2",
     "jszip": "^3.2.0",
+    "jszip-utils": "0.0.2",
     "lodash": "^4.17.11",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

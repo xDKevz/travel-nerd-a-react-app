@@ -7,6 +7,8 @@ import Home from './components/Home.js';
 import About from './components/About.js';
 // import Favorites from './components/Favorites.js';
 import _ from 'lodash';
+import JSZip from 'jszip';
+import JSZipUtils from 'jszip-utils';
 
 
 class App extends Component {
@@ -22,6 +24,28 @@ class App extends Component {
 
   getLocalStorageFav = () => {
       return JSON.parse(localStorage.getItem('favorites'));
+  }
+
+  generateZip = () => {
+      let zip = new JSZip();
+      zip.file("test.jpg", this.urlToDownload("https://storage.googleapis.com/funwebdev-3rd-travel/large/15108090436.jpg"), {binary: true});
+      zip.generateAsync({type:"blob"})
+      .then(function(content){
+          zip.saveAs(content, "test.zip")
+      })
+  }
+
+  //https://stuk.github.io/jszip/documentation/examples/downloader.html
+  urlToDownload = (url) => {
+      return new Promise(function (resolve, reject) {
+          JSZipUtils.getBinaryContent(url, function(err, data) {
+              if (err) {
+                  reject(err);
+              } else {
+                  resolve(data);
+              }
+          });
+      });
   }
 
   async componentDidMount() {
@@ -130,7 +154,7 @@ class App extends Component {
             <Route path='/' exact component={Home} />
             <Route path='/home' exact component={Home} />
             <Route path='/browse' exact render={(props) =>
-                <PhotoBrowser removePhotoFromFav={this.removePhotoFromFav} removePhotoFromList={this.removePhotoFromList} sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
+                <PhotoBrowser generateZip={this.generateZip} removePhotoFromFav={this.removePhotoFromFav} removePhotoFromList={this.removePhotoFromList} sortByValue={this.sortByValue} favorites={this.state.favorites} photos={this.state.photos} updatePhoto={this.updatePhoto} addPhotoToFavorites={this.addPhotoToFavorites} /> 
             }
             />
             <Route path='/about' exact component={About} />

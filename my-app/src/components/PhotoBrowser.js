@@ -35,7 +35,7 @@ class PhotoBrowser extends React.Component {
         return (
             <div>
                 <HeaderApp />
-                <Favorites removePhotoFromFav={this.props.removePhotoFromFav} favorites={this.props.favorites} />
+                <Favorites generateZip={this.props.generateZip} removePhotoFromFav={this.props.removePhotoFromFav} favorites={this.props.favorites} />
                 <section  className="container">
                         <PhotoList changeRender={this.changeRender} removePhotoFromFav={this.props.removePhotoFromFav} removePhotoFromList={this.props.removePhotoFromList} sortByValue={this.props.sortByValue} photos={this.props.photos} showImageDetails={this.showImageDetails} addToFavorites={this.props.addPhotoToFavorites} />
                         {this.viewOrEdit()}

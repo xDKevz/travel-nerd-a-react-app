@@ -5,6 +5,7 @@ import HeaderApp from './HeaderApp.js';
 import Favorites from './Favorites.js';
 import * as cloneDeep from 'lodash/cloneDeep';
 import ViewSinglePhoto from './ViewSinglePhoto.js';
+import MapContainer from './MapContainer.js';
 
 class PhotoBrowser extends React.Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class PhotoBrowser extends React.Component {
         if (renderView === "edit")
             return (<EditPhotoDetails changeRenderView={this.changeRenderView} photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} />);
         else if (renderView === "map")
-            return "";
+            return (<MapContainer changeRenderView={this.changeRenderView} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />);
         else 
             return (<ViewSinglePhoto changeRenderView={this.changeRenderView} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />);
     }

@@ -274,3 +274,17 @@ select {
   /* width: 98%; */
   /* padding: 1em; */
 }
+
+.mapContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 45%;
+  grid-gap: 5px;
+
+}
+
+.mapDetails {
+  position: absolute;
+  left: 55%;
+  top: 0px;
+}

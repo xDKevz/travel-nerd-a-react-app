@@ -11,22 +11,29 @@ body {
    letter-spacing: 4px;
  }
  
- .banner h1, .banner h3, .banner p {
+ .banner h4 {
+     font-size: 1.5em;
+ }
+
+ .banner h1, .banner h3, .banner h4, .banner p {
    margin: 0;
    text-shadow: 2px 2px 6px #000;
    text-align: center;
  }
- 
- .banner {
-   color: white;
-   background: url('https://source.unsplash.com/user/anniespratt/qyAka7W5uMY/1920x1080') top left/cover no-repeat;
-   /* background: url('https://storage.googleapis.com/funwebdev-3rd-travel/large/9496792166.jpg') top left/cover no-repeat; */
-   height: 935px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
- 
+
+.banner {
+    color: black;
+    background: url('https://source.unsplash.com/user/anniespratt/qyAka7W5uMY/1920x1080') top left/cover no-repeat;
+    /* background: url('https://storage.googleapis.com/funwebdev-3rd-travel/large/9496792166.jpg') top left/cover no-repeat; */
+    height: 935px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#aboutBanner {
+    background: var(--list-back);
+}
  .banner p {
     margin-top: 0.75em;
  }
@@ -38,3 +45,8 @@ body {
     min-width: 5em;
  }
  
+ .powered {
+     display: grid;
+     grid-template-columns: auto auto auto auto auto;
+     grid-gap: 1px;
+ }

@@ -6,16 +6,24 @@ class About extends React.Component {
         return (
             <div>
                 <HeaderApp />
-                <div className="banner">
+                <div id="aboutBanner" className="banner">
                     <div>
-                        <h1>About Us!</h1>
-                        <h3>"Lorem Ipsum"</h3>
+                        <h1>COMP 4513 Assignment 1</h1>
                         <p className="para1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultrices purus eget elit molestie convallis. Duis nisl massa, sodales ut commodo in, maximus ut ipsum. Integer vehicula ipsum dolor, eget mattis leo pharetra nec. Ut molestie metus vel quam imperdiet elementum. Nulla consectetur tristique interdum. Etiam eget nunc et justo scelerisque vulputate a a augue. Aenean blandit mi id neque mattis pretium. Integer sed magna fermentum dui interdum sodales. Sed rhoncus, leo vitae tincidunt tempor, nulla dolor mattis sapien, finibus varius justo ligula at erat. Aenean nisl sapien, tristique a suscipit ac, gravida ac enim.
+                            This is a website that demonstrates our understanding of how to generate a single-page application using React.
                         </p>
-                        <p className="para2">  
-                            Vestibulum tincidunt metus ac consequat consectetur. Vestibulum finibus lacus diam, a hendrerit lorem euismod eget. Cras sed sem arcu. Fusce ultricies turpis vel interdum aliquet. Phasellus elit dui, porttitor consequat volutpat efficitur, rutrum in urna. Pellentesque id posuere elit. Sed accumsan accumsan tellus vel facilisis. Donec malesuada ligula eget ultrices dapibus. Cras diam tellus, aliquam vitae dui a, finibus porta magna. Aliquam eu neque ut augue ultrices tempor sed vitae augue. Sed finibus sem felis, a interdum felis porta vitae. Integer vel lacinia nulla.
-                        </p>
+                        <h3>Team Members:</h3>
+                        <h4>  
+                            John Kevin Ruiz & Rafael Angelo Pucut
+                        </h4>
+                        <h3>Powered BY:</h3>
+                        <div className="powered">
+                            <p><img src="https://nodejs.org/static/images/logo.svg" width="200" height="200" alt="NodeJsLogo" /></p>
+                            <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="200" height="200" alt="ReactLogo" /></p>
+                            <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" width="200" height="200" alt="JSLogo" /></p>
+                            <p><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="200" height="200" alt="GithubLogo" /></p>
+                            <p><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="200" height="200" alt="GoogleLogo" /></p>
+                        </div>
                     </div>
                 </div>
             </div>

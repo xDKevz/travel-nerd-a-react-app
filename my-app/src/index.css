@@ -288,3 +288,52 @@ select {
   left: 55%;
   top: 0px;
 }
+
+/* Minimize/Maximize Favorites FROM https://codepen.io/peternguyen/pen/hICga/ */
+#toggleBox {
+    background: var(--favorites-back);
+    color: var(--header-back);
+}
+
+#toggleBox input {
+    display: none;
+    visibility: hidden;
+}
+
+#toggleBox label {
+    display: block;
+    padding: 0.5em;
+    text-align: center;
+    border-bottom: 1px solid var(--header-back);
+    color: #208AAA;
+}
+
+#toggleBox label:hover {
+    color: var(--header-back);
+}
+
+#toggleBox label::before {
+    font-weight: bold;
+    font-size: 14px;
+    content: "+";
+    vertical-align: text-top;
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    margin-right: 3px;
+    background: radial-gradient(ellipse at center, #0B3542 50%, transparent 50%);
+}
+
+#expandf {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s;
+}
+
+#togglef:checked ~ #expandf {
+    height: 144px;
+}
+
+#togglef:checked ~ label::before {
+    content: "-";
+}

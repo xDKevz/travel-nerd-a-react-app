@@ -84,7 +84,7 @@ button:active {
   grid-gap: 5px;
   
   overflow-y: auto ;
-  height: 800px;
+  height: 900px;
 }
 
 .photoBox {
@@ -168,7 +168,7 @@ button:active {
   padding-left: 3em;
   padding-right: 3em;
   background-color: var(--details-box-back);
-  height: 800px;
+  height: 900px;
 }
 .details label {
   font-size: 0.8em;
@@ -264,4 +264,13 @@ legend {
 
 input {
   font-family: inherit;
+}
+
+select {
+  /* font-size: 0.8em; */
+  /* font-weight: bold; */
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  /* width: 98%; */
+  /* padding: 1em; */
 }

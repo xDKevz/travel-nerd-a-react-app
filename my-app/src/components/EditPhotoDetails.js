@@ -10,44 +10,61 @@ class EditPhotoDetails extends React.Component {
         if ( this.props.photos.length > 0 ) {
             // find the object with this id
             const photo = this.props.photos.find( p => p.id === id );
-
-            return(
-                <article className="details">
-                    <div className="detailsPhotoBox">
-                        <form className="photoForm">
-                            {/* <legend>Edit Photo Details</legend> */}
-                            <img src={imgURL+photo.path} alt={ photo.title } />
-    
-                            <label>Title</label>
-                            <input type="text" name="title" value={ photo.title } onChange={ this.handleChange } />
-
-                            <label>Description</label>
-                            <input type="text" name="title" value={ photo.description } onChange={ this.handleChange } />
-
-                            <div className="location">
-                                <span>
-                                    <label>City</label>
-                                    <input type="text" name="city" value={ photo.city } onChange={ this.handleChange } />
-            
-                                    <label>Country</label>
-                                    <input type="text" name="country" value={ photo.country } onChange={ this.handleChange } />
-                                </span>    
-                                <span>
-                                    <label>latitude</label>
-                                    <input type="text" name="latitude" value={ photo.latitude } onChange={ this.handleChange } />
-            
-                                    <label>longitude</label>
-                                    <input type="text" name="longitude" value={ photo.longitude } onChange={ this.handleChange } />
-                                </span>                           
-                            </div>
-                            
-                        </form>
-                    </div>
-                </article>
-            );
+            if (photo != null) {
+                return(
+                    <article className="details">
+                        <div className="detailsPhotoBox">
+                            <form className="photoForm">
+                                {/* <legend>Edit Photo Details</legend> */}
+                                <img src={imgURL+photo.path} alt={ photo.title } />
+                                <br></br>
+                                <label>Title</label>
+                                <input type="text" name="title" value={ photo.title } onChange={ this.handleChange } />
+                                <br></br>
+                                <label>Description</label>
+                                <input type="text" name="description" value={ photo.description } onChange={ this.handleChange } />
+                                <br></br>
+                                <div className="location">
+                                    <span>
+                                        <label>City</label>
+                                        <input type="text" name="city" value={ photo.city } onChange={ this.handleChange } />
+                
+                                        <label>Country</label>
+                                        <input type="text" name="country" value={ photo.country } onChange={ this.handleChange } />
+                                    </span>    
+                                    <span>
+                                        <label>latitude</label>
+                                        <input type="text" name="latitude" value={ photo.latitude } onChange={ this.handleChange } />
+                
+                                        <label>longitude</label>
+                                        <input type="text" name="longitude" value={ photo.longitude } onChange={ this.handleChange } />
+                                    </span>                           
+                                </div>
+                            </form>
+                            <br></br>
+                            <button onClick={this.handleView}>View</button>
+                            <button onClick={this.handleMap}>Map</button>
+                        </div>
+                    </article>
+                );
+            } else {
+                return (
+                        <div className="detailsPhotoBox">
+                            <h1>Photo Removed</h1>
+                        </div>
+                );
+            }
         } else {
             return null;
         }
+    }
+
+    handleView = () => {
+        this.props.changeRenderView("view");
+    }
+
+    handleMap = () => {
+        this.props.changeRenderView("map");
     }
 
     handleChange = (e) => {

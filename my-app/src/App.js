@@ -4,12 +4,14 @@ import { Route } from 'react-router-dom';
 import PhotoBrowser from './components/PhotoBrowser.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
+import _ from 'lodash';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { photos: [], favorites: [] };
+    // temp backup copy of photos
+    this.state = { photos: [], favorites: [], temp: [] };
   }
 
   async componentDidMount() {
@@ -17,7 +19,7 @@ class App extends Component {
       const url = "http://randyconnolly.com/funwebdev/services/travel/images.php";
       const response = await fetch(url);
       const jsonData = await response.json();
-      this.setState( { photos: jsonData } );
+      this.setState( { photos: jsonData, temp: jsonData } );
     }
     catch (error) {
       console.error(error);
@@ -32,10 +34,13 @@ class App extends Component {
         <Route path='/browse' exact 
           render={ (props) => 
           <PhotoBrowser
+            removeFav={ this.removeFav}
+            removePhoto={ this.removePhoto}
             favorites={ this.state.favorites} 
             photos={ this.state.photos } 
             updatePhoto={ this.updatePhoto }  
-            addPhotoToFavorites={ this.addPhotoToFavorites } />
+            addPhotoToFavorites={ this.addPhotoToFavorites }
+              />
            }
         />
         <Route path='/about' exact component={About} />
@@ -56,6 +61,9 @@ class App extends Component {
     photoToReplace.title = photo.title;
     photoToReplace.city = photo.city;
     photoToReplace.country = photo.country;
+    photoToReplace.description = photo.description;
+    photoToReplace.latitude = photo.latitude;
+    photoToReplace.longtitude = photo.longtitude;
 
     // update state
     this.setState( { photos: copyPhotos } );
@@ -82,7 +90,44 @@ class App extends Component {
     }
   }
 
+  removePhoto = (id) => {
+    let index = _.findIndex(this.state.photos, ['id', id]);
+      
+    if (index > -1) {
+        // create copy of favorites
+        const copyPhotos = cloneDeep(this.state.photos);
+        //console.log(copyPhotos);
+        // delete photo
+        _.remove(copyPhotos, copyPhotos[index]);
+        // update state
+        this.setState({ photos: copyPhotos });
+    }
+  }
 
+  removeFav = (id) => {
+    let index = _.findIndex(this.state.favorites, ['id', id]);
+    
+    if (index > -1) {
+        // create copy of favorites
+        const copyFav = cloneDeep(this.state.favorites);
+        //console.log(copyPhotos);
+        // delete fav
+        _.remove(copyFav, copyFav[index]);
+        // update state
+        this.setState({ favorites: copyFav });
+
+        // update local storage
+        this.updateLocalStorage(copyFav);
+    }
+  }
+  
+  updateLocalStorage = (data) => {
+    localStorage.setItem('favorites', JSON.stringify(data));
+  }
+
+  getLocalStorageFav = () => {
+    return JSON.parse(localStorage.getItem('favorites'));
+  }
 }
 
 export default App;

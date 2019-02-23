@@ -15,6 +15,10 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    if (this.getLocalStorageFav() !== null) {
+      this.setState({favorites: this.getLocalStorageFav()});
+    }
+
     try {
       const url = "http://randyconnolly.com/funwebdev/services/travel/images.php";
       const response = await fetch(url);
@@ -85,6 +89,9 @@ class App extends Component {
       
       // update state
       this.setState( { favorites: copyFavorites });
+
+      // update local storage
+      this.updateLocalStorage(copyFavorites);
     } else {
       console.log ("Photo already in favorites")
     }

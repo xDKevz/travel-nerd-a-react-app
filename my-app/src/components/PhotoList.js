@@ -2,6 +2,10 @@ import React from 'react';
 import PhotoThumb from './PhotoThumb';
 
 class PhotoList extends React.Component {
+
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         if (this.props.photos.length > 0 ) {
             return (

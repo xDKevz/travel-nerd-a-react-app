@@ -1,6 +1,10 @@
 import React from 'react';
 
 class ViewSinglePhoto extends React.Component {
+
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         const id = this.props.currentPhoto;
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
@@ -37,10 +41,16 @@ class ViewSinglePhoto extends React.Component {
         }
     }
 
+    /**
+     * This function calls a parent component's function to change the data to be displayed into its edit mode.
+     */
     handleEdit = () => {
         this.props.changeRenderView("edit");
     }
 
+    /**
+     * This function calls a parent component's function to change the data to be displayed into its map mode.
+     */
     handleMap = () => {
         this.props.changeRenderView("map");
     }

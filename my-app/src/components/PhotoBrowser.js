@@ -16,6 +16,9 @@ class PhotoBrowser extends React.Component {
                     };
     }
 
+    /**
+     * This function is a callback when data in state changes.
+     */
     componentWillReceiveProps(nextProps){
         if(nextProps.photos !== this.props.photos ){
              this.setState({ filteredPhoto: nextProps.photos} );
@@ -23,6 +26,9 @@ class PhotoBrowser extends React.Component {
 
     }
 
+    /**
+     * This function activates once data and component is acquired and loaded into DOM.
+     */
     componentDidMount() {
         this.setState({ filteredPhoto: this.props.photos});
     }

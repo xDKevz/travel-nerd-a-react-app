@@ -30,16 +30,25 @@ class PhotoBrowser extends React.Component {
     componentWillMount() {
     }
 
+    /**
+     * This function updates what photo is currently being viewed.
+     */
     updateCurrentPhoto = () => {
         console.log(this.state.currentPhoto);
         this.setState({ currentPhoto: this.props.photos[0].id});
         console.log(this.state.currentPhoto);
     }
 
+    /**
+     * This function handles the state to determine what element component is to be displayed on website.
+     */
     changeRenderView = (value) => {
         this.setState({renderView: value});
     }
 
+    /**
+     * This function changes the element component to be displayed on website.
+     */
     viewEditMap = () => {
 
         let renderView = this.state.renderView;
@@ -51,6 +60,10 @@ class PhotoBrowser extends React.Component {
             return (<ViewSinglePhoto changeRenderView={this.changeRenderView} photos={this.props.photos} currentPhoto={this.state.currentPhoto} />);
     }
 
+    /**
+     * This function filters photo thumbnails by selected country through manipulating state and arrays.
+     * @param e - event object.
+     */
     handleFilter = (e) => {
         let name = e.target.name;
         console.log(name);
@@ -76,6 +89,9 @@ class PhotoBrowser extends React.Component {
         this.setState({filteredPhoto: filtered, currentPhoto: filtered[0].id});
     }
 
+    /**
+     * This function filters photo thumbnails by selected city.
+     */
     uniqueCity = () => {
         const cities = this.props.photos.map( (p) => p.city);
         // creates a unique array of cities returning only unique ones
@@ -83,7 +99,10 @@ class PhotoBrowser extends React.Component {
         // console.log(uniqueCities);
         return uniqueCities;
       }
-    
+
+    /**
+     * This function filters photo thumbnails by selected country.
+     */
     uniqueCountry = () => {
         const country = this.props.photos.map( (p) => p.country);
         // creates a unique array of countries returning only unique ones
@@ -92,11 +111,18 @@ class PhotoBrowser extends React.Component {
         return uniqueCountry;
     }
 
+    /**
+     * This function changes the current Photo being displayed by changing currentPhoto state.
+     * @param id - id of the selected photo to view
+     */
     showImageDetails = (id) => {
         this.setState( {currentPhoto: id });
         // console.log(this.state.currentPhoto);
     }
 
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         return (
             <div>

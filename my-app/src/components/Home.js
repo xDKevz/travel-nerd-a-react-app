@@ -3,6 +3,10 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
+
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         return (
             <div className="banner">

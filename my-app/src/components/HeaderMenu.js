@@ -1,6 +1,10 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+
+/**
+ * Renders/Displays website elements.
+ */
 const HeaderMenu = function (props) {
     return (
         <nav>

@@ -2,6 +2,10 @@ import React from 'react';
 import './EditPhotoDetails.css';
 
 class EditPhotoDetails extends React.Component {
+
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         const id = this.props.currentPhoto;
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
@@ -59,14 +63,24 @@ class EditPhotoDetails extends React.Component {
         }
     }
 
+    /**
+     * This function calls the function using props from a parent component to change information to be displayed into View data.
+     */
     handleView = () => {
         this.props.changeRenderView("view");
     }
 
+    /**
+     * This function calls the function using props from a parent component to change information to be displayed into Map data.
+     */
     handleMap = () => {
         this.props.changeRenderView("map");
     }
 
+    /**
+     * This function updates the Photo's information based on the changes in the user places in the input fields.
+     * @param e - event parameter
+     */
     handleChange = (e) => {
         // find the current photo in our photo array
         const id = this.props.currentPhoto;

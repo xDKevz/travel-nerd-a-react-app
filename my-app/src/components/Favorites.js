@@ -2,6 +2,10 @@ import React from 'react';
 import FavoriteItem from './FavoriteItem.js';
 
 class Favorites extends React.Component {
+
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         return (
             <div id="toggleBox">

@@ -11,9 +11,15 @@ export class MapContainer extends React.Component {
             }
         }
     }
+
+    /**
+     * Renders/Displays website elements.
+     */
     render() {
         const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/square-medium/`;
         let photo = this.props.photos.find((obj) => obj.id === this.props.currentPhoto);
+        //handles what happens when selected photo to display map does not exist.
+        //Code from https://www.npmjs.com/package/google-maps-react
         if (photo != null) {
             return (
                 <div className="mapContainer">
@@ -59,19 +65,31 @@ export class MapContainer extends React.Component {
         }
     }
 
+    /**
+     * This function calls a parent component function that changes the display from the map into the photo view of data.
+     */
     handleView = () => {
         console.log("handleView");
         this.props.changeRenderView("view");
     }
 
+    /**
+     * This function calls a parent component function that changes the display from the map into the edit photo view of data.
+     */
     handleEdit = () => {
         this.props.changeRenderView("edit");
     }
 
-    // code from https://www.movable-type.co.uk/scripts/latlong.html
+    /**
+     * This function calculates the distance in km from user to selected location to map.
+     * The code from https://www.movable-type.co.uk/scripts/latlong.html
+     * @param lat1 - latitude of selected photo
+     * @param lon1 - longitude of selected photo
+     */
     calculateDistance = (lat1, lon1) => {
         let lat2 = this.state.currentLocation.lat;
         let lon2 = this.state.currentLocation.lng;
+        //condition for what happens if the user does not allow access to share their location
         if (lat2 !== 0 && lon2 !== 0) {
             var R = 6371e3; // metres
             var φ1 = this.toRadians(lat1);
@@ -92,11 +110,18 @@ export class MapContainer extends React.Component {
         console.log("Distance = " + d);
         return d;
     }
-    
+
+    /**
+     * This function calculates degrees into radians.
+     * @param degrees - passed degree latitude or longitude value
+     */
     toRadians = (degrees) => {
         return (degrees * Math.PI) / 180;
     }
 
+    /**
+     * This function activates once data and component is acquired and loaded into DOM.
+     */
     componentDidMount () {
         // document.querySelector(".map").style.width = "50%";
         // document.querySelector(".map").style.height = "95%";

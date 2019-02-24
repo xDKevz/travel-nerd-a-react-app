@@ -14,6 +14,9 @@ class App extends Component {
     this.state = { photos: [], favorites: [], temp: [] };
   }
 
+  /**
+   * Asynchronous request for travel photo data.
+   */
   async componentDidMount() {
     if (this.getLocalStorageFav() !== null) {
       this.setState({favorites: this.getLocalStorageFav()});
@@ -30,6 +33,9 @@ class App extends Component {
     }
   }
 
+  /**
+   * Renders/Displays website elements.
+   */
   render() {
     return (
       <div>
@@ -53,6 +59,11 @@ class App extends Component {
     );
   }
 
+  /**
+   * This function updates information of specific Photo Location selected.
+   * @param id - the identification number of current Photo being edited
+   * @param photo - input data associated with 
+   */
   updatePhoto = (id, photo) => {
     // Create a deep clone of photo array from state.
     // We will use a lodash function for that task.
@@ -73,6 +84,10 @@ class App extends Component {
     this.setState( { photos: copyPhotos } );
   }
 
+  /**
+   * This function updates state to add selected photo to favorites array.
+   * @param id - id of the selected favorited photo
+   */
   addPhotoToFavorites = (id) => {
     // find photo to add
     const photo = this.state.photos.find ( p => p.id === id);
@@ -97,6 +112,10 @@ class App extends Component {
     }
   }
 
+  /**
+   * This function removes photo selected from photos array.
+   * @param id - this is the id of the photo to be removed
+   */
   removePhoto = (id) => {
     let index = _.findIndex(this.state.photos, ['id', id]);
       
@@ -111,6 +130,10 @@ class App extends Component {
     }
   }
 
+  /**
+   * This function removes photo selected from favorites array.
+   * @param id - this is the id of the favorited photo to be removed
+   */
   removeFav = (id) => {
     let index = _.findIndex(this.state.favorites, ['id', id]);
     
@@ -127,11 +150,18 @@ class App extends Component {
         this.updateLocalStorage(copyFav);
     }
   }
-  
+
+  /**
+   * This function updates the local Storage to remember favorited photos of user.
+   * @param data - array of favorited photos
+   */
   updateLocalStorage = (data) => {
     localStorage.setItem('favorites', JSON.stringify(data));
   }
 
+  /**
+   * This function gets/acquires the local Storage of favorited photos of user.
+   */
   getLocalStorageFav = () => {
     return JSON.parse(localStorage.getItem('favorites'));
   }

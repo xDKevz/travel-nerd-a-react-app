@@ -2,6 +2,10 @@ import React from 'react';
 import HeaderApp from './HeaderApp.js';
 
 class About extends React.Component {
+
+   /**
+    * Renders/Displays website elements.
+    */
     render() {
         return (
             <div>

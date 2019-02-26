@@ -133,7 +133,7 @@ class PhotoBrowser extends React.Component {
         return (
             <div>
                 <HeaderApp />
-                <Favorites favorites={this.props.favorites} removeFav={this.props.removeFav} />
+                <Favorites downloadFavorites={this.props.downloadFavorites} favorites={this.props.favorites} removeFav={this.props.removeFav} />
                 <div className="photoBrowser">
                     <div className="sorting">
                             <label>Filter by: </label>

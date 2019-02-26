@@ -44,6 +44,7 @@ class App extends Component {
         <Route path='/browse' exact 
           render={ (props) => 
           <PhotoBrowser
+            downloadFavorites={ this.downloadFavorites}
             removeFav={ this.removeFav}
             removePhoto={ this.removePhoto}
             favorites={ this.state.favorites} 
@@ -165,6 +166,47 @@ class App extends Component {
   getLocalStorageFav = () => {
     return JSON.parse(localStorage.getItem('favorites'));
   }
+
+  /*
+  * This function will large versions of favorited images
+  * however due to CORS policy in order for the code to work in a localhost
+  * environment, in chrome you would need to install the extension
+  * https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+  * So far we have not found any alternative to these step
+  */
+  downloadFavorites = () => {
+    const JSZip = require("jszip");
+    const JSZipUtils = require('jszip-utils');
+    const FileSaver = require("file-saver");
+    const zip = new JSZip();
+
+    // Code from https://stuk.github.io/jszip/documentation/examples/downloader.html
+    const image = function(url) {
+      return new Promise(function(resolve, reject) {
+        JSZipUtils.getBinaryContent(url, function(err, data) {
+          if(err)
+            reject(err);
+          else
+            resolve(data);
+        });
+      });
+    }
+
+    // iterates through favorites array and adds each image to zip
+    for(let img of this.state.favorites) {
+      let url = "https://storage.googleapis.com/funwebdev-3rd-travel/large/"
+      console.log(url+img.path);
+      zip.file(img.title+".jpg", image(url + img.path), {binary:true} );
+    }
+
+    // saves images as zip
+    zip.generateAsync({type: "blob"})
+    .then(function(content) {
+      FileSaver.saveAs(content, "favorites.zip");
+    });
+  }
+
+
 }
 
 export default App;

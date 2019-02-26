@@ -15,13 +15,17 @@ class Favorites extends React.Component {
                     <div className="favorites">
                         <div className="label">
                             <p>❤ Favorites</p>
-                            <button>Download</button>
+                            <button onClick={this.handleDownload}>Download</button>
                         </div>
                         { this.props.favorites.map ( (p) => <FavoriteItem removeFav={this.props.removeFav} favorites={p} key={p.id} /> )}
                     </div>
                 </div>
             </div>
         );
+    }
+
+    handleDownload = () => {
+        this.props.downloadFavorites();
     }
 }
 

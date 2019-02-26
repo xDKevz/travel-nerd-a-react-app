@@ -11,7 +11,7 @@ class About extends React.Component {
             <div>
                 <HeaderApp />
                 <div id="aboutBanner" className="banner">
-                    <div>
+                    <div className="aboutContent">
                         <h1>COMP 4513 Assignment 1</h1>
                         <p className="para1">
                             This is a website that demonstrates our understanding of how to generate a single-page application using React.
@@ -20,6 +20,14 @@ class About extends React.Component {
                         <h4>  
                             John Kevin Ruiz & Rafael Angelo Pucut
                         </h4>
+                        <h4>Helpful Resources:</h4>
+                        <div>
+                            <li><a href="https://codepen.io/peternguyen/pen/hICga/">Favorites Toggle</a></li>
+                            <li><a href="https://www.npmjs.com/package/google-maps-react">Google Maps React</a></li>
+                            <li><a href="https://www.movable-type.co.uk/scripts/latlong.html">Haversine Formula JavaScript</a></li>
+                            <li><a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en">CORS Extension</a></li>
+                            <li><a href="https://stuk.github.io/jszip/documentation/examples/downloader.html">JSZip Helpful Code</a></li>
+                        </div>
                         <h3>Powered BY:</h3>
                         <div className="powered">
                             <p><img src="https://nodejs.org/static/images/logo.svg" width="200" height="200" alt="NodeJsLogo" /></p>

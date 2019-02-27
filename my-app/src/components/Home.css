@@ -81,3 +81,60 @@ body {
     background-color: grey;
 }
 
+@media screen and (max-width:1100px) {
+    .banner {
+        height: 100%;
+    }
+    .aboutContent p {
+        text-align: center;
+    }
+    .aboutContent {
+        margin-top: 2em;
+        margin-bottom: 2em;
+        width: 75%;
+        height: 70%;
+    }
+    .memojis h5 {
+        font-size: 80%;
+        margin-bottom: 1em;
+    }
+
+    .powered {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: 1px;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .aboutContent p {
+        font-size: 90%;
+        text-align: center;
+    }
+
+    .memojis h5 {
+        font-size: 80%;
+        margin-bottom: 2em;
+    }
+
+    .powered {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 1px;
+        margin: 0;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+    .memojis {
+        display: grid;
+        grid-gap: 2px;
+        grid-template-columns: auto;
+        margin: 0;
+        text-align: center;
+    }
+}

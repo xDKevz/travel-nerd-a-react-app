@@ -1,5 +1,7 @@
 import React from 'react';
 import HeaderApp from './HeaderApp.js';
+import memojiK from './images/memoji_kevin.png';
+import memojiR from './images/memoji_rafael.png';
 
 class About extends React.Component {
 
@@ -16,10 +18,18 @@ class About extends React.Component {
                         <p className="para1">
                             This is a website that demonstrates our understanding of how to generate a single-page application using React.
                         </p>
-                        <h3>Team Members:</h3>
-                        <h4>  
-                            John Kevin Ruiz & Rafael Angelo Pucut
-                        </h4>
+                        <h3>Team Members (Github):</h3>
+                        <div className="memojis">  
+                            <a href="https://github.com/xDKevz" target="_blank">
+                                <img src={memojiK} width="200" height="200" alt="Kevin" />
+                                <h5>John Kevin Ruiz</h5>
+                            </a>
+                            
+                            <a href="https://github.com/Rancelot" target="_blank">
+                                <img src={memojiR} width="200" height="200" alt="Rafael" />
+                                <h5>Rafael Angelo Pucut</h5>
+                            </a>
+                        </div>
                         <h4>Helpful Resources:</h4>
                         <div>
                             <li><a href="https://codepen.io/peternguyen/pen/hICga/">Favorites Toggle</a></li>

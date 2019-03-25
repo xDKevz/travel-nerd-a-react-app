@@ -23,7 +23,7 @@ class App extends Component {
     }
 
     try {
-      const url = "http://randyconnolly.com/funwebdev/services/travel/images.php";
+      const url = "https://randyconnolly.com/funwebdev/services/travel/images.php";
       const response = await fetch(url);
       const jsonData = await response.json();
       this.setState( { photos: jsonData, temp: jsonData } );
